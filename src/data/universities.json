@@ -1,0 +1,24 @@
+[
+    {
+      "nombre": "Universidad Nacional de Colombia",
+      "departamento": "Antioquia",
+      "carreras": ["Ingeniería de Sistemas", "Medicina"],
+      "nivel": "Pregrado",
+      "tipo": "Pública"
+    },
+    {
+      "nombre": "Universidad de los Andes",
+      "departamento": "Bogotá",
+      "carreras": ["Derecho", "Administración"],
+      "nivel": "Posgrado",
+      "tipo": "Privada"
+    },
+    {
+      "nombre": "Universidad de Antioquia",
+      "departamento": "Antioquia",
+      "carreras": ["Enfermería", "Psicología"],
+      "nivel": "Pregrado",
+      "tipo": "Pública"
+    }
+  ]
+  
