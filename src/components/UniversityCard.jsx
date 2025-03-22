@@ -6,7 +6,7 @@ const UniversityCard = ({ university }) => {
   return (
     <article
       tabIndex="0"
-      className="border border-gray-200 dark:border-gray-700 p-4 rounded-xl shadow-sm bg-white dark:bg-gray-800 hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      className="border border-gray-200 dark:border-gray-700 p-4 rounded-xl shadow-sm bg-white dark:bg-gray-800 hover:shadow-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
       aria-label={`Información de la universidad ${university.nombre}`}
     >
       <header className="mb-2">
@@ -14,21 +14,33 @@ const UniversityCard = ({ university }) => {
           🎓 {university.nombre}
         </h2>
       </header>
+
       <p className="text-sm flex items-center gap-1 text-gray-700 dark:text-gray-200">
         <MapPin className="w-4 h-4 text-pink-600" aria-hidden="true" />
-        <span><strong>Departamento:</strong> {university.departamento}</span>
+        <span>
+          <strong>Departamento:</strong> {university.departamento}
+        </span>
       </p>
+
       <p className="text-sm flex items-center gap-1 text-gray-700 dark:text-gray-200">
         <GraduationCap className="w-4 h-4 text-purple-600" aria-hidden="true" />
-        <span><strong>Carreras:</strong> {university.carreras.join(", ")}</span>
+        <span>
+          <strong>Carreras:</strong> {university.carreras.join(", ")}
+        </span>
       </p>
+
       <p className="text-sm flex items-center gap-1 text-gray-700 dark:text-gray-200">
         <Target className="w-4 h-4 text-red-500" aria-hidden="true" />
-        <span><strong>Nivel:</strong> {university.nivel}</span>
+        <span>
+          <strong>Nivel:</strong> {university.nivel}
+        </span>
       </p>
+
       <p className="text-sm flex items-center gap-1 text-gray-700 dark:text-gray-200">
         <Landmark className="w-4 h-4" aria-hidden="true" />
-        <span><strong>Tipo:</strong> {university.tipo}</span>
+        <span>
+          <strong>Tipo:</strong> {university.tipo}
+        </span>
       </p>
     </article>
   );
