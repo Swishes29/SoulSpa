@@ -1,9 +1,8 @@
-// src/pages/Home.jsx
 import React, { useState, useEffect } from "react";
 import universitiesData from "../data/universities.json";
-import FilterBar from "../components/FilterBar";
+import FilterBar, { NoResults } from "../components/FilterBar";
 import UniversityCard from "../components/UniversityCard";
-import { Moon, Sun } from "lucide-react"; // Iconos desde Lucide
+import { Moon, Sun } from "lucide-react";
 
 const Navbar = ({ darkMode, toggleDarkMode }) => (
   <header className={`${
@@ -40,9 +39,10 @@ const Home = () => {
     tipo: ""
   });
 
-  const [filteredData, setFilteredData] = useState(universitiesData);
+  const [filteredData, setFilteredData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [darkMode, setDarkMode] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
 
   const itemsPerPage = 6;
 
@@ -53,10 +53,17 @@ const Home = () => {
 
   const handleResetFilters = () => {
     setFilters({ nombre: "", departamento: "", carrera: "", nivel: "", tipo: "" });
+    setFilteredData([]);
+    setHasSearched(false);
     setCurrentPage(1);
   };
 
   useEffect(() => {
+    const isAnyFilterFilled = Object.values(filters).some((value) => value.trim() !== "");
+    if (!isAnyFilterFilled) {
+      setFilteredData([]);
+      return;
+    }
     const results = universitiesData.filter((uni) => {
       const nombreMatch = uni.nombre.toLowerCase().includes(filters.nombre.toLowerCase());
       const departamentoMatch = uni.departamento.toLowerCase().includes(filters.departamento.toLowerCase());
@@ -69,6 +76,7 @@ const Home = () => {
 
     setFilteredData(results);
     setCurrentPage(1);
+    setHasSearched(true);
   }, [filters]);
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
@@ -90,37 +98,45 @@ const Home = () => {
           </button>
         </div>
 
-        <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
-          Resultados encontrados: <strong>{filteredData.length}</strong>
-        </p>
+        {hasSearched && (
+          <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
+            Resultados encontrados: <strong>{filteredData.length}</strong>
+          </p>
+        )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {paginatedData.map((uni, idx) => (
-            <div
-              key={idx}
-              className="transform transition duration-500 hover:scale-105"
-            >
-              <UniversityCard university={uni} />
+        {!hasSearched ? null : filteredData.length === 0 ? (
+          <NoResults />
+        ) : (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {paginatedData.map((uni, idx) => (
+                <div
+                  key={idx}
+                  className="transform transition duration-500 hover:scale-105"
+                >
+                  <UniversityCard university={uni} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        {totalPages > 1 && (
-          <div className="flex justify-center mt-8 gap-2">
-            {[...Array(totalPages)].map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentPage(i + 1)}
-                className={`px-4 py-2 rounded shadow-sm text-sm font-medium transition ${
-                  currentPage === i + 1
-                    ? "bg-blue-700 text-white"
-                    : "bg-white text-blue-700 border border-blue-300 hover:bg-blue-100 dark:bg-gray-800 dark:text-white dark:border-gray-600"
-                }`}
-              >
-                {i + 1}
-              </button>
-            ))}
-          </div>
+            {totalPages > 1 && (
+              <div className="flex justify-center mt-8 gap-2">
+                {[...Array(totalPages)].map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentPage(i + 1)}
+                    className={`px-4 py-2 rounded shadow-sm text-sm font-medium transition ${
+                      currentPage === i + 1
+                        ? "bg-blue-700 text-white"
+                        : "bg-white text-blue-700 border border-blue-300 hover:bg-blue-100 dark:bg-gray-800 dark:text-white dark:border-gray-600"
+                    }`}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+              </div>
+            )}
+          </>
         )}
       </main>
     </div>

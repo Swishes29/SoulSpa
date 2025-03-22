@@ -2,23 +2,131 @@
     {
       "nombre": "Universidad Nacional de Colombia",
       "departamento": "Antioquia",
-      "carreras": ["Ingeniería de Sistemas", "Medicina"],
+      "carreras": [
+        "Ingeniería de Sistemas",
+        "Medicina"
+      ],
       "nivel": "Pregrado",
       "tipo": "Pública"
     },
     {
       "nombre": "Universidad de los Andes",
       "departamento": "Bogotá",
-      "carreras": ["Derecho", "Administración"],
+      "carreras": [
+        "Derecho",
+        "Administración"
+      ],
       "nivel": "Posgrado",
       "tipo": "Privada"
     },
     {
       "nombre": "Universidad de Antioquia",
       "departamento": "Antioquia",
-      "carreras": ["Enfermería", "Psicología"],
+      "carreras": [
+        "Enfermería",
+        "Psicología"
+      ],
       "nivel": "Pregrado",
       "tipo": "Pública"
+    },
+    {
+      "nombre": "Universidad Simulada 1",
+      "departamento": "Cundinamarca",
+      "carreras": [
+        "Carrera 1",
+        "Carrera 2"
+      ],
+      "nivel": "Posgrado",
+      "tipo": "Privada"
+    },
+    {
+      "nombre": "Universidad Simulada 2",
+      "departamento": "Valle del Cauca",
+      "carreras": [
+        "Carrera 2",
+        "Carrera 3"
+      ],
+      "nivel": "Pregrado",
+      "tipo": "Privada"
+    },
+    {
+      "nombre": "Universidad Simulada 3",
+      "departamento": "Atlántico",
+      "carreras": [
+        "Carrera 3",
+        "Carrera 4"
+      ],
+      "nivel": "Posgrado",
+      "tipo": "Pública"
+    },
+    {
+      "nombre": "Universidad Simulada 4",
+      "departamento": "Santander",
+      "carreras": [
+        "Carrera 4",
+        "Carrera 5"
+      ],
+      "nivel": "Pregrado",
+      "tipo": "Privada"
+    },
+    {
+      "nombre": "Universidad Simulada 5",
+      "departamento": "Nariño",
+      "carreras": [
+        "Carrera 5",
+        "Carrera 6"
+      ],
+      "nivel": "Posgrado",
+      "tipo": "Privada"
+    },
+    {
+      "nombre": "Universidad Simulada 6",
+      "departamento": "Bolívar",
+      "carreras": [
+        "Carrera 6",
+        "Carrera 7"
+      ],
+      "nivel": "Pregrado",
+      "tipo": "Pública"
+    },
+    {
+      "nombre": "Universidad Simulada 7",
+      "departamento": "Caldas",
+      "carreras": [
+        "Carrera 7",
+        "Carrera 8"
+      ],
+      "nivel": "Posgrado",
+      "tipo": "Privada"
+    },
+    {
+      "nombre": "Universidad Simulada 8",
+      "departamento": "Huila",
+      "carreras": [
+        "Carrera 8",
+        "Carrera 9"
+      ],
+      "nivel": "Pregrado",
+      "tipo": "Privada"
+    },
+    {
+      "nombre": "Universidad Simulada 9",
+      "departamento": "Risaralda",
+      "carreras": [
+        "Carrera 9",
+        "Carrera 10"
+      ],
+      "nivel": "Posgrado",
+      "tipo": "Pública"
+    },
+    {
+      "nombre": "Universidad Simulada 10",
+      "departamento": "Magdalena",
+      "carreras": [
+        "Carrera 10",
+        "Carrera 11"
+      ],
+      "nivel": "Pregrado",
+      "tipo": "Privada"
     }
   ]
-  

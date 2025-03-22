@@ -1,5 +1,5 @@
 import React from "react";
-import { Search, MapPin, GraduationCap, Target, Landmark } from "lucide-react";
+import { Search, MapPin, GraduationCap, Target, Landmark, Frown } from "lucide-react";
 
 const FilterBar = ({ filters, setFilters }) => {
   const handleChange = (e) => {
@@ -67,5 +67,13 @@ const FilterBar = ({ filters, setFilters }) => {
     </div>
   );
 };
+
+export const NoResults = () => (
+  <div className="flex flex-col items-center justify-center py-20 text-center text-gray-500 dark:text-gray-400">
+    <Frown className="w-10 h-10 mb-4 text-gray-400" />
+    <p className="text-lg font-medium">No se encontraron universidades con esos filtros.</p>
+    <p className="text-sm">Prueba ajustando los campos o usando menos filtros.</p>
+  </div>
+);
 
 export default FilterBar;
