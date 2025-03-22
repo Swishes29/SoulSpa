@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import universitiesData from "../data/universities.json";
 import FilterBar, { NoResults } from "../components/FilterBar";
 import UniversityCard from "../components/UniversityCard";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, Compass, Home as HomeIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const Navbar = ({ darkMode, toggleDarkMode }) => (
+const Navbar = ({ darkMode, toggleDarkMode, explorar }) => (
   <header className={`${
     darkMode ? "bg-gray-900 text-white" : "bg-blue-800 text-white"
   } shadow-md sticky top-0 z-50 transition-colors`}>
@@ -13,10 +14,10 @@ const Navbar = ({ darkMode, toggleDarkMode }) => (
         🎓 FindMyUniversity
       </h1>
       <div className="flex items-center gap-6">
-        <nav className="hidden md:flex gap-6 text-sm">
-          <a href="#" className="hover:underline">Inicio</a>
-          <a href="#" className="hover:underline">Explorar</a>
-          <a href="#" className="hover:underline">Contacto</a>
+        <nav className="hidden md:flex gap-6 text-sm items-center">
+          <a href="#top" className="hover:underline flex items-center gap-1"><HomeIcon className="w-4 h-4" />Inicio</a>
+          <button onClick={explorar} className="hover:underline flex items-center gap-1"><Compass className="w-4 h-4" />Explorar</button>
+          <Link to="/contacto" className="hover:underline flex items-center gap-1">📩 Contáctanos</Link>
         </nav>
         <button
           onClick={toggleDarkMode}
@@ -58,6 +59,10 @@ const Home = () => {
     setCurrentPage(1);
   };
 
+  const explorar = () => {
+    setFilters({ tipo: "Pública", nombre: "", departamento: "", carrera: "", nivel: "" });
+  };
+
   useEffect(() => {
     const isAnyFilterFilled = Object.values(filters).some((value) => value.trim() !== "");
     if (!isAnyFilterFilled) {
@@ -68,8 +73,8 @@ const Home = () => {
       const nombreMatch = uni.nombre.toLowerCase().includes(filters.nombre.toLowerCase());
       const departamentoMatch = uni.departamento.toLowerCase().includes(filters.departamento.toLowerCase());
       const carreraMatch = filters.carrera === "" || uni.carreras.some((c) => c.toLowerCase().includes(filters.carrera.toLowerCase()));
-      const nivelMatch = filters.nivel === "" || uni.nivel === filters.nivel;
-      const tipoMatch = filters.tipo === "" || uni.tipo === filters.tipo;
+      const nivelMatch = filters.nivel === "" || uni.nivel.toLowerCase() === filters.nivel.toLowerCase();
+      const tipoMatch = filters.tipo === "" || uni.tipo.toLowerCase() === filters.tipo.toLowerCase();
 
       return nombreMatch && departamentoMatch && carreraMatch && nivelMatch && tipoMatch;
     });
@@ -83,10 +88,16 @@ const Home = () => {
   const paginatedData = filteredData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
-    <div className={`min-h-screen transition-colors ${darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}`}>
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+    <div id="top" className={`min-h-screen transition-colors ${darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}`}>
+      <Navbar
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
+        explorar={explorar}
+      />
       <main className="p-6 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold mb-6 text-center text-blue-800 dark:text-blue-300">Encuentra tu universidad ideal en Colombia</h2>
+        <h2 className="text-3xl font-bold mb-6 text-center text-blue-800 dark:text-blue-300">
+          Encuentra tu universidad ideal en Colombia
+        </h2>
 
         <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
           <FilterBar filters={filters} setFilters={setFilters} />
