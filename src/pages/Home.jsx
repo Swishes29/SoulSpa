@@ -21,14 +21,23 @@ const Navbar = ({ darkMode, toggleDarkMode, explorar }) => {
         </h1>
         <div className="flex items-center gap-4">
           {/* Menú de escritorio */}
-          <nav className="hidden md:flex gap-6 text-sm items-center" aria-label="Navegación principal">
+          <nav
+            className="hidden md:flex gap-6 text-sm items-center"
+            aria-label="Navegación principal"
+          >
             <a href="#top" className="hover:underline flex items-center gap-1">
               <HomeIcon className="w-4 h-4" /> Inicio
             </a>
-            <button onClick={explorar} className="hover:underline flex items-center gap-1">
+            <button
+              onClick={explorar}
+              className="hover:underline flex items-center gap-1"
+            >
               <Compass className="w-4 h-4" /> Explorar
             </button>
-            <Link to="/contacto" className="hover:underline flex items-center gap-1">
+            <Link
+              to="/contacto"
+              className="hover:underline flex items-center gap-1"
+            >
               📩 Contáctanos
             </Link>
           </nav>
@@ -47,12 +56,34 @@ const Navbar = ({ darkMode, toggleDarkMode, explorar }) => {
             aria-label="Menú"
           >
             {isMobileMenuOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             )}
           </button>
@@ -60,7 +91,10 @@ const Navbar = ({ darkMode, toggleDarkMode, explorar }) => {
       </div>
       {/* Menú móvil */}
       {isMobileMenuOpen && (
-        <nav className="md:hidden bg-blue-800 dark:bg-gray-800 text-white px-4 py-2" aria-label="Navegación móvil">
+        <nav
+          className="md:hidden bg-blue-800 dark:bg-gray-800 text-white px-4 py-2"
+          aria-label="Navegación móvil"
+        >
           <a
             href="#top"
             className="block py-2 hover:underline flex items-center gap-1"
@@ -96,7 +130,7 @@ const Home = () => {
     departamento: "",
     carrera: "",
     nivel: "",
-    tipo: ""
+    tipo: "",
   });
 
   const [filteredData, setFilteredData] = useState([]);
@@ -119,23 +153,41 @@ const Home = () => {
   };
 
   const explorar = () => {
-    setFilters({ tipo: "Pública", nombre: "", departamento: "", carrera: "", nivel: "" });
+    setFilters({
+      tipo: "Pública",
+      nombre: "",
+      departamento: "",
+      carrera: "",
+      nivel: "",
+    });
   };
 
   useEffect(() => {
-    const isAnyFilterFilled = Object.values(filters).some((value) => value.trim() !== "");
+    const isAnyFilterFilled = Object.values(filters).some(
+      (value) => value.trim() !== ""
+    );
     if (!isAnyFilterFilled) {
       setFilteredData([]);
       return;
     }
     const results = universitiesData.filter((uni) => {
-      const nombreMatch = uni.nombre.toLowerCase().includes(filters.nombre.toLowerCase());
-      const departamentoMatch = uni.departamento.toLowerCase().includes(filters.departamento.toLowerCase());
+      const nombreMatch = uni.nombre
+        .toLowerCase()
+        .includes(filters.nombre.toLowerCase());
+      const departamentoMatch = uni.departamento
+        .toLowerCase()
+        .includes(filters.departamento.toLowerCase());
       const carreraMatch =
         filters.carrera === "" ||
-        uni.carreras.some((c) => c.toLowerCase().includes(filters.carrera.toLowerCase()));
-      const nivelMatch = filters.nivel === "" || uni.nivel.toLowerCase() === filters.nivel.toLowerCase();
-      const tipoMatch = filters.tipo === "" || uni.tipo.toLowerCase() === filters.tipo.toLowerCase();
+        uni.carreras.some((c) =>
+          c.toLowerCase().includes(filters.carrera.toLowerCase())
+        );
+      const nivelMatch =
+        filters.nivel === "" ||
+        uni.nivel.toLowerCase() === filters.nivel.toLowerCase();
+      const tipoMatch =
+        filters.tipo === "" ||
+        uni.tipo.toLowerCase() === filters.tipo.toLowerCase();
 
       return nombreMatch && departamentoMatch && carreraMatch && nivelMatch && tipoMatch;
     });
@@ -146,7 +198,10 @@ const Home = () => {
   }, [filters]);
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-  const paginatedData = filteredData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  const paginatedData = filteredData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   return (
     <div
@@ -156,8 +211,9 @@ const Home = () => {
       }`}
     >
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} explorar={explorar} />
-      <main className="p-6 max-w-7xl mx-auto">
-        <section className="text-center my-8">
+      <main className="p-6 max-w-7xl mx-auto space-y-12">
+        {/* Sección principal (hero) */}
+        <section className="text-center">
           <h2 className="text-4xl font-extrabold mb-4 text-blue-800 dark:text-blue-300">
             Encuentra tu universidad ideal en Colombia
           </h2>
@@ -166,18 +222,24 @@ const Home = () => {
           </p>
         </section>
 
-        <section className="mb-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <FilterBar filters={filters} setFilters={setFilters} />
-          <button
-            onClick={handleResetFilters}
-            className="self-end bg-red-100 hover:bg-red-200 text-red-700 font-medium py-2 px-4 rounded shadow-sm transition"
-          >
-            Limpiar filtros
-          </button>
+        {/* Sección de filtros */}
+        <section className="flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex-1">
+            <FilterBar filters={filters} setFilters={setFilters} />
+          </div>
+          <div>
+            <button
+              onClick={handleResetFilters}
+              className="w-full sm:w-auto bg-white border border-red-500 text-red-500 hover:bg-red-50 hover:border-red-600 hover:text-red-600 font-semibold py-2 px-6 rounded-full shadow-md transition-transform transform hover:scale-105"
+            >
+              Limpiar filtros
+            </button>
+          </div>
         </section>
 
+        {/* Resultados */}
         {hasSearched && (
-          <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
+          <p className="text-sm text-gray-700 dark:text-gray-300 text-center">
             Resultados encontrados: <strong>{filteredData.length}</strong>
           </p>
         )}
@@ -189,14 +251,21 @@ const Home = () => {
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {paginatedData.map((uni, idx) => (
-                  <div key={idx} className="transform transition duration-500 hover:scale-105">
+                  <div
+                    key={idx}
+                    className="transform transition duration-500 hover:scale-105"
+                  >
                     <UniversityCard university={uni} />
                   </div>
                 ))}
               </div>
-
+  
               {totalPages > 1 && (
-                <div className="flex justify-center mt-8 gap-2" role="navigation" aria-label="Paginación">
+                <div
+                  className="flex justify-center mt-8 gap-2"
+                  role="navigation"
+                  aria-label="Paginación"
+                >
                   {[...Array(totalPages)].map((_, i) => (
                     <button
                       key={i}
