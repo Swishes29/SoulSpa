@@ -8,9 +8,12 @@ const FilterBar = ({ filters, setFilters }) => {
   };
 
   return (
-    <form className="flex flex-wrap gap-4 p-4 bg-white dark:bg-gray-800 shadow-md rounded-2xl w-full" onSubmit={(e) => e.preventDefault()}>
+    <form
+      onSubmit={(e) => e.preventDefault()}
+      className="grid grid-cols-1 gap-4 p-4 bg-white dark:bg-gray-800 shadow-md rounded-2xl w-full"
+    >
       {/* Filtro Universidad */}
-      <div className="relative w-full md:w-1/5">
+      <div className="relative">
         <label htmlFor="nombre" className="sr-only">Universidad</label>
         <Search className="absolute left-2.5 top-2.5 w-4 h-4 text-gray-400" aria-hidden="true" />
         <input
@@ -18,13 +21,16 @@ const FilterBar = ({ filters, setFilters }) => {
           name="nombre"
           placeholder="Universidad..."
           autoComplete="off"
-          className="pl-8 border border-gray-300 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="pl-8 border border-gray-300 dark:border-gray-700 
+                     dark:bg-gray-700 dark:text-white rounded-lg p-2 w-full
+                     focus:outline-none focus:ring-2 focus:ring-blue-400"
           value={filters.nombre}
           onChange={handleChange}
         />
       </div>
+
       {/* Filtro Departamento */}
-      <div className="relative w-full md:w-1/5">
+      <div className="relative">
         <label htmlFor="departamento" className="sr-only">Departamento</label>
         <MapPin className="absolute left-2.5 top-2.5 w-4 h-4 text-gray-400" aria-hidden="true" />
         <input
@@ -32,13 +38,16 @@ const FilterBar = ({ filters, setFilters }) => {
           name="departamento"
           placeholder="Departamento"
           autoComplete="off"
-          className="pl-8 border border-gray-300 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="pl-8 border border-gray-300 dark:border-gray-700 
+                     dark:bg-gray-700 dark:text-white rounded-lg p-2 w-full
+                     focus:outline-none focus:ring-2 focus:ring-blue-400"
           value={filters.departamento}
           onChange={handleChange}
         />
       </div>
+
       {/* Filtro Carrera */}
-      <div className="relative w-full md:w-1/5">
+      <div className="relative">
         <label htmlFor="carrera" className="sr-only">Carrera</label>
         <GraduationCap className="absolute left-2.5 top-2.5 w-4 h-4 text-gray-400" aria-hidden="true" />
         <input
@@ -46,19 +55,24 @@ const FilterBar = ({ filters, setFilters }) => {
           name="carrera"
           placeholder="Carrera"
           autoComplete="off"
-          className="pl-8 border border-gray-300 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="pl-8 border border-gray-300 dark:border-gray-700 
+                     dark:bg-gray-700 dark:text-white rounded-lg p-2 w-full
+                     focus:outline-none focus:ring-2 focus:ring-blue-400"
           value={filters.carrera}
           onChange={handleChange}
         />
       </div>
+
       {/* Filtro Nivel */}
-      <div className="relative w-full md:w-1/5">
+      <div className="relative">
         <label htmlFor="nivel" className="sr-only">Nivel</label>
         <Target className="absolute left-2.5 top-2.5 w-4 h-4 text-gray-400" aria-hidden="true" />
         <select
           id="nivel"
           name="nivel"
-          className="pl-8 border border-gray-300 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="pl-8 border border-gray-300 dark:border-gray-700 
+                     dark:bg-gray-700 dark:text-white rounded-lg p-2 w-full
+                     focus:outline-none focus:ring-2 focus:ring-blue-400"
           value={filters.nivel}
           onChange={handleChange}
         >
@@ -67,14 +81,17 @@ const FilterBar = ({ filters, setFilters }) => {
           <option value="Posgrado">Posgrado</option>
         </select>
       </div>
+
       {/* Filtro Tipo */}
-      <div className="relative w-full md:w-1/5">
+      <div className="relative">
         <label htmlFor="tipo" className="sr-only">Tipo</label>
         <Landmark className="absolute left-2.5 top-2.5 w-4 h-4 text-gray-400" aria-hidden="true" />
         <select
           id="tipo"
           name="tipo"
-          className="pl-8 border border-gray-300 dark:border-gray-700 dark:bg-gray-700 dark:text-white rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="pl-8 border border-gray-300 dark:border-gray-700 
+                     dark:bg-gray-700 dark:text-white rounded-lg p-2 w-full
+                     focus:outline-none focus:ring-2 focus:ring-blue-400"
           value={filters.tipo}
           onChange={handleChange}
         >

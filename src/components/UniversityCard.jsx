@@ -46,4 +46,6 @@ const UniversityCard = ({ university }) => {
   );
 };
 
+
+
 export default UniversityCard;
