@@ -1,17 +1,12 @@
-// src/components/Navbar.jsx
 import React, { useState } from "react";
-import { Moon, Sun, Compass, Home as HomeIcon } from "lucide-react";
+import { Compass, Home as HomeIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ darkMode, toggleDarkMode }) => {
+const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header
-      className={`${
-        darkMode ? "bg-gray-900 text-white" : "bg-blue-800 text-white"
-      } shadow-md sticky top-0 z-50 transition-colors backdrop-blur-md`}
-    >
+    <header className="bg-blue-800 text-white shadow-md sticky top-0 z-50 transition-colors backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <h1 className="text-xl md:text-2xl font-bold flex items-center gap-2">
           🎓 UniAcceso
@@ -21,27 +16,13 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             <a href="#top" className="hover:underline flex items-center gap-1">
               <HomeIcon className="w-4 h-4" /> Inicio
             </a>
-            <Link
-              to="/explorar"
-              className="hover:underline flex items-center gap-1"
-            >
+            <Link to="/explorar" className="hover:underline flex items-center gap-1">
               <Compass className="w-4 h-4" /> Explorar
             </Link>
-            <Link
-              to="/contacto"
-              className="hover:underline flex items-center gap-1"
-            >
+            <Link to="/contacto" className="hover:underline flex items-center gap-1">
               📩 Contáctanos
             </Link>
           </nav>
-
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded hover:bg-white/10 transition"
-            aria-label="Cambiar modo"
-          >
-            {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
 
           <button
             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
@@ -74,10 +55,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
       </div>
 
       {isMobileMenuOpen && (
-        <nav
-          className="md:hidden bg-blue-800 dark:bg-gray-800 text-white px-4 py-2"
-          aria-label="Navegación móvil"
-        >
+        <nav className="md:hidden bg-blue-800 text-white px-4 py-2" aria-label="Navegación móvil">
           <a
             href="#top"
             className="block py-2 hover:underline flex items-center gap-1"

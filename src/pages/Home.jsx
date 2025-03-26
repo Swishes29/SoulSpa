@@ -1,4 +1,3 @@
-// src/pages/Home.jsx
 import React, { useState, useEffect } from "react";
 import universitiesData from "../data/universities.json";
 import Navbar from "../components/Navbar";
@@ -18,16 +17,10 @@ const Home = () => {
 
   const [filteredData, setFilteredData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [darkMode, setDarkMode] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
 
   const navigate = useNavigate();
   const itemsPerPage = 6;
-
-  const toggleDarkMode = () => {
-    setDarkMode((prev) => !prev);
-    document.documentElement.classList.toggle("dark", !darkMode);
-  };
 
   const handleResetFilters = () => {
     setFilters({ nombre: "", departamento: "", carrera: "", nivel: "", tipo: "" });
@@ -91,17 +84,8 @@ const Home = () => {
   );
 
   return (
-    <div
-      id="top"
-      className={`min-h-screen transition-colors ${
-        darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"
-      }`}
-    >
-      <Navbar
-        darkMode={darkMode}
-        toggleDarkMode={toggleDarkMode}
-        explorar={explorar}
-      />
+    <div id="top" className="min-h-screen bg-gray-100 text-black">
+      <Navbar explorar={explorar} />
       <main className="p-6 max-w-7xl mx-auto space-y-12">
         <Hero />
         <FilterSection
