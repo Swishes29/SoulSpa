@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Moon, Sun, Compass, Home as HomeIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ darkMode, toggleDarkMode, explorar }) => {
+const Navbar = ({ darkMode, toggleDarkMode }) => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -21,12 +21,12 @@ const Navbar = ({ darkMode, toggleDarkMode, explorar }) => {
             <a href="#top" className="hover:underline flex items-center gap-1">
               <HomeIcon className="w-4 h-4" /> Inicio
             </a>
-            <button
-              onClick={explorar}
+            <Link
+              to="/explorar"
               className="hover:underline flex items-center gap-1"
             >
               <Compass className="w-4 h-4" /> Explorar
-            </button>
+            </Link>
             <Link
               to="/contacto"
               className="hover:underline flex items-center gap-1"
@@ -85,18 +85,16 @@ const Navbar = ({ darkMode, toggleDarkMode, explorar }) => {
           >
             <HomeIcon className="w-4 h-4" /> Inicio
           </a>
-          <button
-            onClick={() => {
-              explorar();
-              setMobileMenuOpen(false);
-            }}
+          <Link
+            to="/explorar"
+            onClick={() => setMobileMenuOpen(false)}
             className="block py-2 hover:underline flex items-center gap-1"
           >
             <Compass className="w-4 h-4" /> Explorar
-          </button>
+          </Link>
           <Link
-            onClick={() => setMobileMenuOpen(false)}
             to="/contacto"
+            onClick={() => setMobileMenuOpen(false)}
             className="block py-2 hover:underline flex items-center gap-1"
           >
             📩 Contáctanos

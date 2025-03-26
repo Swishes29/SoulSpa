@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import FilterSection from "../components/FilterSection";
 import Results from "../components/Results";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [filters, setFilters] = useState({
@@ -20,6 +21,7 @@ const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
 
+  const navigate = useNavigate();
   const itemsPerPage = 6;
 
   const toggleDarkMode = () => {
@@ -35,13 +37,7 @@ const Home = () => {
   };
 
   const explorar = () => {
-    setFilters({
-      tipo: "Pública",
-      nombre: "",
-      departamento: "",
-      carrera: "",
-      nivel: "",
-    });
+    navigate("/explorar");
   };
 
   useEffect(() => {
@@ -50,33 +46,42 @@ const Home = () => {
     );
     if (!isAnyFilterFilled) {
       setFilteredData([]);
-      return;
-    }
-    const results = universitiesData.filter((uni) => {
-      const nombreMatch = uni.nombre
-        .toLowerCase()
-        .includes(filters.nombre.toLowerCase());
-      const departamentoMatch = uni.departamento
-        .toLowerCase()
-        .includes(filters.departamento.toLowerCase());
-      const carreraMatch =
-        filters.carrera === "" ||
-        uni.carreras.some((c) =>
-          c.toLowerCase().includes(filters.carrera.toLowerCase())
+      setHasSearched(false);
+    } else {
+      const results = universitiesData.filter((uni) => {
+        if (uni.simulada) return false; // Ocultar universidades simuladas
+
+        const nombreMatch = uni.nombre
+          .toLowerCase()
+          .includes(filters.nombre.toLowerCase());
+        const departamentoMatch = uni.departamento
+          .toLowerCase()
+          .includes(filters.departamento.toLowerCase());
+        const carreraMatch =
+          filters.carrera === "" ||
+          uni.carreras.some((c) =>
+            c.toLowerCase().includes(filters.carrera.toLowerCase())
+          );
+        const nivelMatch =
+          filters.nivel === "" ||
+          uni.nivel.toLowerCase() === filters.nivel.toLowerCase();
+        const tipoMatch =
+          filters.tipo === "" ||
+          uni.tipo.toLowerCase() === filters.tipo.toLowerCase();
+
+        return (
+          nombreMatch &&
+          departamentoMatch &&
+          carreraMatch &&
+          nivelMatch &&
+          tipoMatch
         );
-      const nivelMatch =
-        filters.nivel === "" ||
-        uni.nivel.toLowerCase() === filters.nivel.toLowerCase();
-      const tipoMatch =
-        filters.tipo === "" ||
-        uni.tipo.toLowerCase() === filters.tipo.toLowerCase();
+      });
 
-      return nombreMatch && departamentoMatch && carreraMatch && nivelMatch && tipoMatch;
-    });
-
-    setFilteredData(results);
-    setCurrentPage(1);
-    setHasSearched(true);
+      setFilteredData(results);
+      setCurrentPage(1);
+      setHasSearched(true);
+    }
   }, [filters]);
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
@@ -92,7 +97,11 @@ const Home = () => {
         darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"
       }`}
     >
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} explorar={explorar} />
+      <Navbar
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
+        explorar={explorar}
+      />
       <main className="p-6 max-w-7xl mx-auto space-y-12">
         <Hero />
         <FilterSection
