@@ -1,4 +1,3 @@
-// src/pages/Explorar.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { GraduationCap, Star, Trophy } from "lucide-react";
@@ -34,7 +33,7 @@ const ExplorarPage = () => {
   const navigate = useNavigate();
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-50 dark:from-gray-900 dark:to-gray-800 py-12 px-4 text-gray-900 dark:text-white">
+    <main className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-50 py-12 px-4 text-gray-900">
       {/* Hero con imagen de fondo */}
       <header
         className="max-w-5xl mx-auto text-center mb-12 relative overflow-hidden rounded-xl"
@@ -68,7 +67,7 @@ const ExplorarPage = () => {
               className="group focus:outline-none"
             >
               <article
-                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-transparent 
+                className="bg-white p-6 rounded-xl shadow-md border border-transparent 
                            group-hover:border-blue-300 group-hover:shadow-xl transform group-hover:scale-105 
                            transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
               >
@@ -84,19 +83,19 @@ const ExplorarPage = () => {
                 {/* Encabezado de la tarjeta */}
                 <div className="flex items-center gap-3 mb-3">
                   <GraduationCap className="w-6 h-6 text-indigo-500" />
-                  <h2 className="text-xl font-semibold text-blue-700 dark:text-blue-300">
+                  <h2 className="text-xl font-semibold text-blue-700">
                     {uni.nombre}
                   </h2>
                 </div>
 
                 {/* Descripción */}
-                <p className="text-sm text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                <p className="text-sm text-gray-700 mb-4 leading-relaxed">
                   {uni.descripcion}
                 </p>
 
                 {/* Ranking */}
                 <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-1 text-sm text-yellow-600 dark:text-yellow-400">
+                  <div className="flex items-center gap-1 text-sm text-yellow-600">
                     <Trophy className="w-4 h-4" />
                     <span>Ranking QS: {uni.ranking}</span>
                   </div>
@@ -107,7 +106,7 @@ const ExplorarPage = () => {
                   {uni.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="text-xs bg-indigo-100 dark:bg-indigo-700 dark:text-white px-2 py-1 rounded-full"
+                      className="text-xs bg-indigo-100 px-2 py-1 rounded-full"
                     >
                       {tag}
                     </span>
@@ -121,14 +120,14 @@ const ExplorarPage = () => {
 
       {/* Sección "¿Sabías que...?" */}
       <section className="max-w-5xl mx-auto mt-16 text-center">
-        <article className="inline-block bg-blue-50 dark:bg-blue-900 p-8 rounded-xl shadow-lg transition-transform hover:scale-105 duration-300">
+        <article className="inline-block bg-blue-50 p-8 rounded-xl shadow-lg transition-transform hover:scale-105 duration-300">
           <div className="flex items-center justify-center mb-4">
             <Star className="w-6 h-6 text-yellow-500 mr-2" />
-            <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-300">
+            <h3 className="text-xl font-semibold text-blue-800">
               ¿Sabías que...?
             </h3>
           </div>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+          <p className="text-sm text-gray-600 mb-4">
             Colombia cuenta con más de 300 instituciones de educación superior reconocidas
             por el Ministerio de Educación Nacional.
           </p>
