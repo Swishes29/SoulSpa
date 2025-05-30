@@ -1,4 +1,4 @@
-// src/components/FilterSection.jsx
+
 import FilterBar from "./FilterBar";
 
 const FilterSection = ({ filters, setFilters, handleResetFilters }) => (

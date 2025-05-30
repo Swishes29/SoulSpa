@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import universitiesData from "../data/universities.json";
-import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import FilterSection from "../components/FilterSection";
 import Results from "../components/Results";
@@ -42,7 +41,7 @@ const Home = () => {
       setHasSearched(false);
     } else {
       const results = universitiesData.filter((uni) => {
-        if (uni.simulada) return false; // Ocultar universidades simuladas
+        if (uni.simulada) return false; 
 
         const nombreMatch = uni.nombre
           .toLowerCase()
@@ -85,7 +84,6 @@ const Home = () => {
 
   return (
     <div id="top" className="min-h-screen bg-gray-100 text-black">
-      <Navbar explorar={explorar} />
       <main className="p-6 max-w-7xl mx-auto space-y-12">
         <Hero />
         <FilterSection

@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "date-fns": "^4.1.0",
     "findmyuniversity-v2": "file:",
+    "framer-motion": "^12.15.0",
     "lucide-react": "^0.483.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

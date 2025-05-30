@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { GraduationCap, Star, Trophy } from "lucide-react";
+import { GraduationCap, Star, Trophy, ArrowLeft } from "lucide-react";
 
 const universidadesTop = [
   {
@@ -33,106 +33,90 @@ const ExplorarPage = () => {
   const navigate = useNavigate();
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-50 py-12 px-4 text-gray-900">
-      {/* Hero con imagen de fondo */}
-      <header
-        className="max-w-5xl mx-auto text-center mb-12 relative overflow-hidden rounded-xl"
+    <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-12 px-6 text-gray-900">
+      {/* Hero */}
+      <section
+        className="relative max-w-6xl mx-auto mb-16 rounded-2xl overflow-hidden"
         style={{
           backgroundImage: "url('https://source.unsplash.com/featured/?campus,universidad')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       >
-        {/* Overlay para mejorar legibilidad */}
-        <div className="bg-black bg-opacity-50 p-8 rounded-xl">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-blue-100 drop-shadow-lg">
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-70" />
+        <div className="relative p-12 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
             Explora universidades destacadas
           </h1>
-          <p className="text-lg sm:text-xl text-gray-200">
-            Descubre las instituciones más reconocidas en Colombia por su excelencia académica,
-            infraestructura de punta y proyección internacional.
+          <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">
+            Descubre las instituciones más reconocidas en Colombia por su excelencia académica, infraestructura de punta y proyección internacional.
           </p>
         </div>
-      </header>
+      </section>
 
-      {/* Sección de Tarjetas */}
-      <section className="max-w-5xl mx-auto mb-12">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {universidadesTop.map((uni) => (
-            <a
-              key={uni.nombre}
-              href={uni.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group focus:outline-none"
-            >
-              <article
-                className="bg-white p-6 rounded-xl shadow-md border border-transparent 
-                           group-hover:border-blue-300 group-hover:shadow-xl transform group-hover:scale-105 
-                           transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              >
-                {/* Imagen de la universidad */}
-                {uni.imagen && (
-                  <img
-                    src={uni.imagen}
-                    alt={`Imagen de ${uni.nombre}`}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                  />
-                )}
-
-                {/* Encabezado de la tarjeta */}
-                <div className="flex items-center gap-3 mb-3">
-                  <GraduationCap className="w-6 h-6 text-indigo-500" />
-                  <h2 className="text-xl font-semibold text-blue-700">
+      {/* Cards */}
+      <section className="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {universidadesTop.map((uni) => (
+          <a
+            key={uni.nombre}
+            href={uni.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group transform hover:scale-105 transition-colors duration-300"
+          >
+            <article className="relative bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-transparent group-hover:border-gradient bg-gradient-to-br group-hover:from-green-200 group-hover:to-blue-200">
+              <img
+                src={uni.imagen}
+                alt={`Logo ${uni.nombre}`}
+                className="w-full h-40 object-contain p-6 bg-white"
+              />
+              <div className="p-6">
+                <div className="flex items-center mb-3">
+                  <GraduationCap className="w-6 h-6 text-green-500 mr-2" />
+                  <h2 className="text-xl font-semibold text-gray-800">
                     {uni.nombre}
                   </h2>
                 </div>
-
-                {/* Descripción */}
-                <p className="text-sm text-gray-700 mb-4 leading-relaxed">
+                <p className="text-sm text-gray-600 mb-4 leading-relaxed">
                   {uni.descripcion}
                 </p>
-
-                {/* Ranking */}
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-1 text-sm text-yellow-600">
-                    <Trophy className="w-4 h-4" />
-                    <span>Ranking QS: {uni.ranking}</span>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center text-yellow-600">
+                    <Trophy className="w-5 h-5 mr-1" />
+                    <span className="font-medium">{uni.ranking}</span>
                   </div>
+                  <Star className="w-5 h-5 text-gray-300 group-hover:text-yellow-500 transition" />
                 </div>
-
-                {/* Etiquetas */}
                 <div className="flex flex-wrap gap-2">
                   {uni.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="text-xs bg-indigo-100 px-2 py-1 rounded-full"
+                      className="text-xs font-medium bg-blue-100 text-blue-800 px-3 py-1 rounded-full"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-              </article>
-            </a>
-          ))}
-        </div>
+              </div>
+            </article>
+          </a>
+        ))}
       </section>
 
-      {/* Sección "¿Sabías que...?" */}
-      <section className="max-w-5xl mx-auto mt-16 text-center">
-        <article className="inline-block bg-blue-50 p-8 rounded-xl shadow-lg transition-transform hover:scale-105 duration-300">
+      {/* Did you know */}
+      <section className="max-w-4xl mx-auto mt-20 text-center">
+        <article className="inline-block bg-gradient-to-br from-green-200 to-blue-200 p-8 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition">
           <div className="flex items-center justify-center mb-4">
-            <Star className="w-6 h-6 text-yellow-500 mr-2" />
-            <h3 className="text-xl font-semibold text-blue-800">
+            <Star className="w-8 h-8 text-yellow-500 mr-2" />
+            <h3 className="text-2xl font-bold text-gray-800">
               ¿Sabías que...?
             </h3>
           </div>
-          <p className="text-sm text-gray-600 mb-4">
-            Colombia cuenta con más de 300 instituciones de educación superior reconocidas
-            por el Ministerio de Educación Nacional.
+          <p className="text-base text-gray-700 mb-6">
+            Colombia cuenta con más de 300 instituciones de educación superior reconocidas por el Ministerio de Educación Nacional.
           </p>
           <button
-            className="bg-blue-700 hover:bg-blue-800 focus:bg-blue-800 text-white font-semibold py-2 px-4 rounded-full shadow transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="inline-block bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-transform hover:scale-105"
             onClick={() => alert("Más información próximamente...")}
           >
             Descubre más
@@ -140,15 +124,14 @@ const ExplorarPage = () => {
         </article>
       </section>
 
-      {/* Botón para volver atrás */}
-      <div className="flex justify-center mt-12">
-        <button
-          onClick={() => navigate(-1)}
-          className="bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-6 rounded-full transition-all shadow-md"
-        >
-          ← Volver atrás
-        </button>
-      </div>
+      {/* Floating Back Button */}
+      <button
+        onClick={() => navigate(-1)}
+        className="fixed bottom-6 left-6 bg-white p-3 rounded-full shadow-lg hover:shadow-2xl transition-transform hover:scale-110"
+        aria-label="Volver atrás"
+      >
+        <ArrowLeft className="w-6 h-6 text-gray-700" />
+      </button>
     </main>
   );
 };
