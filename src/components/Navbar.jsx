@@ -1,9 +1,6 @@
-// Navbar.jsx
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Logo from '../Images/Logo.jpg';
-import FlagColombia from '../Images/co.png';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,11 +34,13 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#home" className="flex items-center gap-3 group">
           <img
-            src={Logo}
+            src="/Logo.jpg"
             alt="Soul Spa Logo"
             className="h-14 w-14 object-cover rounded-full shadow-md border-2 border-white group-hover:scale-105 transition-transform"
           />
-          <span className={`text-2xl font-serif font-bold tracking-wider transition-colors ${textColor} ${hoverColor}`}>
+          <span
+            className={`text-2xl font-serif font-bold tracking-wider transition-colors ${textColor} ${hoverColor}`}
+          >
             Soul Spa
           </span>
         </a>
@@ -88,7 +87,7 @@ export default function Navbar() {
 
         {/* Right icons (desktop) */}
         <div className="hidden md:flex items-center gap-4">
-          <img src={FlagColombia} alt="Colombia" className="h-5 w-7 rounded shadow" />
+          <img src="/co.png" alt="Colombia" className="h-5 w-7 rounded shadow" />
           <a
             href="#reserva"
             className="bg-[#f6e6c2] hover:bg-[#e7d7b1] text-neutral-800 px-6 py-2 rounded-full font-semibold tracking-wide uppercase text-sm shadow-md transition"
@@ -156,7 +155,7 @@ export default function Navbar() {
                 </a>
               </li>
               <li className="mt-4">
-                <img src={FlagColombia} alt="Colombia" className="h-5 w-7 rounded shadow inline-block mr-2" />
+                <img src="/co.png" alt="Colombia" className="h-5 w-7 rounded shadow inline-block mr-2" />
                 <span className="text-sm text-neutral-600">Español</span>
               </li>
             </ul>

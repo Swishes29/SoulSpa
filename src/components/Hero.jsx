@@ -23,7 +23,7 @@ export default function Hero() {
     >
       {/* Video de fondo */}
       <video
-        src="public\SoulSpa.mp4"
+        src="/SoulSpa.mp4"
         autoPlay
         muted
         loop
