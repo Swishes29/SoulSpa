@@ -1,24 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Explorar from './pages/Explorar';
-import Contacto from './pages/Contacto';
-import Eventos from './pages/Eventos';
-import MainLayout from './components/MainLayout';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Services from './components/Services';
+import Testimonials from './components/Testimonials';
+import BookingForm from './components/BookingForm';
 
-function App() {
+export default function App() {
   return (
-    <Router>
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/explorar" element={<Explorar />} />
-          <Route path="/contacto" element={<Contacto />} />
-          <Route path="/eventos" element={<Eventos />} />
-        </Route>
-      </Routes>
-    </Router>
+    <div className="min-h-screen flex flex-col">
+      <Navbar />
+      <Hero />
+      <Services />
+      <Testimonials />
+      <BookingForm />
+    </div>
   );
 }
-
-export default App;
