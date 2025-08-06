@@ -6,8 +6,7 @@ import { ChevronRight, Calendar } from 'lucide-react';
 const services = [
   {
     title: 'Spa y Bienestar Corporal',
-    image:
-      'https://images.unsplash.com/photo-1649751295468-953038600bef?q=80&w=1170&auto=format&fit=crop',
+    image: '/Imagen1.avif',
     items: [
       'Masaje relajante Armonía',
       'Drenajes linfáticos',
@@ -20,8 +19,7 @@ const services = [
   },
   {
     title: 'Extensiones de Pestañas',
-    image:
-      'https://plus.unsplash.com/premium_photo-1661438442743-7a5d2f9f0aa5?q=80&w=1184&auto=format&fit=crop',
+    image: '/imagen2.avif',
     items: [
       'Clásicas',
       'Cola de sirena',
@@ -42,8 +40,7 @@ const services = [
   },
   {
     title: 'Cejas y Complementarios',
-    image:
-      'https://plus.unsplash.com/premium_photo-1718626727207-854154e67324?q=80&w=687&auto=format&fit=crop',
+    image: '/imagen3.avif',
     items: [
       'Lifting de pestañas',
       'Laminado de cejas',
